@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'phonebook.label', default: 'Phonebook')}" />
-        <title><g:message code="default.show.label" args="[entityName]" /></title>
+        <g:set var="entityName" value="${message(code: 'phonebook.label', default: 'test')}" />
+        <title><g:message code="default.show.details" args="[entityName]" /></title>
     </head>
     <body>
         <a href="#show-phonebook" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
