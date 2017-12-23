@@ -19,6 +19,9 @@ class PhonebookController {
     }
 
     def create() {
+//        respond new Phonebook(params)
+//        Phonebook phonebook = new Phonebook()
+//        phonebook.name = Phonebook(params).getName
         respond new Phonebook(params)
     }
 
