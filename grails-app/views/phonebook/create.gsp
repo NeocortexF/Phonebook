@@ -35,13 +35,13 @@
         <fieldset class="form">
             <div class="fieldcontain">
                 <div class="form-group">
-                    <label for="surname">Фамилия</label>
-                    <g:textField name="surname" value="${this.phonebook.surname}"/>
+                    <label for="name">Имя</label>
+                    <g:textField name="name" required="true" value="${this.phonebook.name}"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="name">Имя</label>
-                    <g:textField name="name" value="${this.phonebook.name}"/>
+                    <label for="surname">Фамилия</label>
+                    <g:textField name="surname" required="true" value="${this.phonebook.surname}"/>
                 </div>
 
                 <div class="form-group">
@@ -51,15 +51,17 @@
 
                 <div class="form-group">
                     <label for="birthday">Дата рождения</label>
-                    <g:datePicker name="birthday" precision="day" value="${this.phonebook.birthday}"/>
+                    %{--<g:datepickerUI name="birthday" required="true" value="${this.phonebook.birthday}"/>--}%
+                    <g:datepickerUI name="birthday" required="true" value="${this.phonebook.birthday}" options="{minDate:’-2Y’, maxDate:’+1Y’}"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="telephone">Телефон</label>
+                    <label for="telephone">Телефонный номер</label>
                     <g:textField name="telephone" value="${this.phonebook.telephone}"/>
+
                 </div>
                 <div class="form-group">
-                    <label for="eMail">E-mail</label>
+                    <label for="eMail">Адрес электронной почты</label>
                     <g:textField name="eMail" value="${this.phonebook.eMail}"/>
                 </div>
             </div>

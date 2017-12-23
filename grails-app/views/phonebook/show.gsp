@@ -24,13 +24,13 @@
                 <fieldset class="form">
                     <div class="fieldcontain">
                         <div class="form-group">
-                            <label for="surname">Фамилия</label>
-                            <g:textField name="surname" readonly="readonly" value="${this.phonebook.surname}"/>
+                            <label for="name">Имя</label>
+                            <g:textField name="name" readonly="readonly" value="${this.phonebook.name}"/>
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Имя</label>
-                            <g:textField name="name" readonly="readonly" value="${this.phonebook.name}"/>
+                            <label for="surname">Фамилия</label>
+                            <g:textField name="surname" readonly="readonly" value="${this.phonebook.surname}"/>
                         </div>
 
                         <div class="form-group">
@@ -44,11 +44,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="telephone">Телефон</label>
+                            <label for="telephone">Телефонный номер</label>
                             <g:textField name="telephone" readonly="readonly" value="${this.phonebook.telephone}"/>
                         </div>
                         <div class="form-group">
-                            <label for="eMail">E-mail</label>
+                            <label for="eMail">Адрес электронной почты</label>
                             <g:textField name="eMail" readonly="readonly" value="${this.phonebook.eMail}"/>
                         </div>
                     </div>
