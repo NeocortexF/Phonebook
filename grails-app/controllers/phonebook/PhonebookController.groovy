@@ -37,7 +37,7 @@ class PhonebookController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'phonebook.label', default: 'Phonebook'), phonebook.id])
+                flash.message = message(code: 'default.created.messageOfContact', args: [message(code: 'phonebook.label', default: 'Phonebook'), phonebook.id])
                 redirect phonebook
             }
             '*' { respond phonebook, [status: CREATED] }
@@ -63,7 +63,7 @@ class PhonebookController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'phonebook.label', default: 'Phonebook'), phonebook.id])
+                flash.message = message(code: 'default.updated.messageOfContact', args: [message(code: 'phonebook.label', default: 'Phonebook'), phonebook.id])
                 redirect phonebook
             }
             '*'{ respond phonebook, [status: OK] }
