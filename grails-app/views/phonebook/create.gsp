@@ -27,7 +27,18 @@
             </g:hasErrors>
             <g:form resource="${this.phonebook}" method="POST">
                 <fieldset class="form">
-                    <g:render template="createForm"/>
+                    <div class="fieldcontain">
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <g:textField name="name" value="${this.phonebook.name}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Фамилия</label>
+                        <g:textField name="surname" value="${this.phonebook.surname}"/>
+                    </div>
+
+
+                    </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
