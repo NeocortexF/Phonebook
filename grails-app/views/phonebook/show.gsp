@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'phonebook.label', default: 'test')}" />
+        <g:set var="entityName" value="${message(code: 'phonebook.label', default: 'Phonebook')}" />
         <title><g:message code="default.show.details" args="[entityName]" /></title>
     </head>
     <body>
@@ -10,12 +10,12 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="list" action="index"><g:message code="default.list.phonebook" args="[entityName]" /></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="default.new.contact" args="[entityName]" /></g:link></li>
             </ul>
         </div>
         <div id="show-phonebook" class="content scaffold-show" role="main">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="default.show.contact" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>

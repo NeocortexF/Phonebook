@@ -6,7 +6,9 @@ class Phonebook {
         name blank: false
         surname blank: false
         birthday nullable: false
-        eMail email: true
+        eMail email: true, blank: true
+        patronymic blank: true
+        telephone blank: true
     }
 
     String name
@@ -15,5 +17,4 @@ class Phonebook {
     Date birthday
     String telephone
     String eMail
-
 }

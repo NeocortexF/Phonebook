@@ -80,7 +80,7 @@ class PhonebookController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'phonebook.label', default: 'Phonebook'), id])
+                flash.message = message(code: 'default.deleted.messageOfContact', args: [message(code: 'phonebook.label', default: 'Phonebook'), id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
