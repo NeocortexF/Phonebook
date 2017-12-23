@@ -19,8 +19,41 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="phonebook" />
+            %{--<f:display bean="phonebook" />--}%
             <g:form resource="${this.phonebook}" method="DELETE">
+                <fieldset class="form">
+                    <div class="fieldcontain">
+                        <div class="form-group">
+                            <label for="surname">Фамилия</label>
+                            <g:textField name="surname" readonly="readonly" value="${this.phonebook.surname}"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <g:textField name="name" readonly="readonly" value="${this.phonebook.name}"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patronymic">Отчество</label>
+                            <g:textField name="patronymic" readonly="readonly" value="${this.phonebook.patronymic}"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthday">Дата рождения</label>
+                            <g:datePicker name="birthday" readonly="readonly" precision="day" disabled="disabled" value="${this.phonebook.birthday}"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telephone">Телефон</label>
+                            <g:textField name="telephone" readonly="readonly" value="${this.phonebook.telephone}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="eMail">E-mail</label>
+                            <g:textField name="eMail" readonly="readonly" value="${this.phonebook.eMail}"/>
+                        </div>
+                    </div>
+                </fieldset>
+
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.phonebook}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
