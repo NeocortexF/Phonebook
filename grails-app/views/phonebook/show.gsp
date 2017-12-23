@@ -40,7 +40,7 @@
 
                         <div class="form-group">
                             <label for="birthday">Дата рождения</label>
-                            <g:datePicker name="birthday" readonly="readonly" precision="day" disabled="disabled" value="${this.phonebook.birthday}"/>
+                            <g:datePicker name="birthday" precision="day" disabled="disabled" value="${this.phonebook.birthday}"/>
                         </div>
 
                         <div class="form-group">

@@ -51,13 +51,12 @@
 
                 <div class="form-group">
                     <label for="birthday">Дата рождения</label>
-                    %{--<g:datepickerUI name="birthday" required="true" value="${this.phonebook.birthday}"/>--}%
-                    <g:datepickerUI name="birthday" required="true" value="${this.phonebook.birthday}" options="{minDate:’-2Y’, maxDate:’+1Y’}"/>
+                    <g:datePicker name="birthday" required="true" precision="day" value="${this.phonebook.birthday}"/>
                 </div>
 
                 <div class="form-group">
                     <label for="telephone">Телефонный номер</label>
-                    <g:textField name="telephone" value="${this.phonebook.telephone}"/>
+                    <g:field type="text" pattern="[0-9]{7,11}" name="telephone" value="${this.phonebook.telephone}" placeholder="${g.message(code: 'form.field.telephone', default: '7-11 digit number')}"/>
 
                 </div>
                 <div class="form-group">
