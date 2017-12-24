@@ -18,7 +18,29 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${phonebookList}" properties="['name', 'surname']" />
+            %{--<f:table collection="${phonebookList}" properties="['name', 'surname']" />--}%
+            <g:form resource="${phonebookList}" method="GET">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTable">
+                            <thead>
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Возраст</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeA">
+                                <g:each in="${phonebookList}">
+                                    <td>${it.name} ${it.surname} ${it.patronymic}</td>
+                                    <td>${it.birthday}</td>
+                                </g:each>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </g:form>
 
             <div class="pagination">
                 <g:paginate total="${phonebookCount ?: 0}" />
