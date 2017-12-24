@@ -87,6 +87,23 @@ class PhonebookController {
         }
     }
 
+    def upload = {
+        request.getFile('filecsv')
+                .inputStream
+                .splitEachLine(';') { fields ->
+            def phonebook = new Phonebook(name: fields[1].trim(),
+                    surname: fields[2].trim(), patronymic: fields[3].trim(),
+                    birthday: fields[4].toString().trim(), telephone: fields[5].trim(),
+                    eMail: fields[6].trim())
+
+            if (phonebook.hasErrors() || phonebook.save(flush: true) == null) {
+                log.error("Could not import domainObject  ${phonebook.errors}")
+            }
+
+            log.debug("Importing domainObject  ${phonebook.toString()}")
+        }
+    }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {

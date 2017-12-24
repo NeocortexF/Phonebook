@@ -30,7 +30,7 @@
                 <table class="table table-striped table-bordered table-hover" id="dataTable">
                     <thead>
                     <tr>
-                        <th>ФИО2</th>
+                        <th>ФИО</th>
                         <th>Возраст</th>
                     </tr>
                     </thead>
@@ -49,6 +49,16 @@
             </div>
         </div>
     </g:form>
+    <div class="panel-body">
+        <div class="form-group">
+            <label>Импортировать из CSV</label>
+            <g:uploadForm action="upload">
+                <input type="file" name="filecsv"/>
+                <input type="submit"/>
+            </g:uploadForm>
+        </div>
+    </div>
+
     <div class="pagination">
         <g:paginate total="${phonebookCount ?: 0}"/>
     </div>
