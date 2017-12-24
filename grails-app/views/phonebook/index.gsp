@@ -30,7 +30,7 @@
                 <table class="table table-striped table-bordered table-hover" id="dataTable">
                     <thead>
                     <tr>
-                        <th>ФИО</th>
+                        <th>ФИО2</th>
                         <th>Возраст</th>
                     </tr>
                     </thead>
