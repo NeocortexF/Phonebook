@@ -93,9 +93,10 @@ class PhonebookController {
                 .splitEachLine(';') { fields ->
             def phonebook = new Phonebook(name: fields[1].trim(),
                     surname: fields[2].trim(), patronymic: fields[3].trim(),
-                    birthday: fields[4].trim(), telephone: fields[5].trim(),
+                    telephone: fields[5].trim(),
                     eMail: fields[6].trim())
-            phonebook.save(flush: true)
+
+            //birthday: fields[4].trim(),
 
             if (phonebook.hasErrors() || phonebook.save(flush: true) == null) {
                 log.error("Could not import domainObject  ${phonebook.errors}")
@@ -103,6 +104,10 @@ class PhonebookController {
 
             log.debug("Importing domainObject  ${phonebook.toString()}")
         }
+
+        def stringList = phonebookService.list()
+        String result = stringList.join(",")
+        println(result)
 
     }
 
