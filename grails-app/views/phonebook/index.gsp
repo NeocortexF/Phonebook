@@ -16,6 +16,8 @@
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="create" action="create"><g:message code="default.new.contact"
                                                               args="[entityName]"/></g:link></li>
+        <li><a class="list" href="${createLink(uri: '/phonebook/upload.gsp')}">
+            <g:message code="default.upload.label"/></a></li>
     </ul>
 </div>
 

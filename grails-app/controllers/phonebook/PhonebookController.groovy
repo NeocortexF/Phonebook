@@ -1,6 +1,8 @@
 package phonebook
 
 import grails.validation.ValidationException
+import org.springframework.web.multipart.MultipartFile
+
 import static org.springframework.http.HttpStatus.*
 
 class PhonebookController {
@@ -84,6 +86,16 @@ class PhonebookController {
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
+        }
+    }
+
+    def upload() {
+        MultipartFile file = request.getFile( 'file' )
+        file.inputStream.eachCsvLine { row ->
+            String name = row[1] ?: "NA";
+            String email = row[2] ?: "NA";
+
+            // Business Logic here
         }
     }
 
