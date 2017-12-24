@@ -37,11 +37,11 @@
                     <tbody>
                     <g:each in="${phonebookList}">
                         <tr class="gradeA">
-                            <td><a href="/phonebook/show/${it.id}" target="_blank">${it.surname} ${it.name} ${it.patronymic}</a></td>
+                            <td><a href="/phonebook/show/${it.id}">${it.surname} ${it.name} ${it.patronymic}</a></td>
                             <g:set var="birth" value="${it.birthday}"/>
                             <% duration = new java.util.Date().toTimestamp().minus(birth) %>
                             <% years = Math.round(duration / 365) %>
-                            <td><%=years%></td>
+                            <td><a href="/phonebook/show/${it.id}"><%=years%></a></td>
                         </tr>
                     </g:each>
                     </tbody>
