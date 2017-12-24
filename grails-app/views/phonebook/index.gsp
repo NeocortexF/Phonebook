@@ -24,7 +24,6 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-%{--<f:table collection="${phonebookList}" properties="['name', 'surname']" />--}%
     <g:form resource="${phonebookList}" method="GET">
         <div class="panel-body">
             <div class="table-responsive col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -38,7 +37,7 @@
                     <tbody>
                     <g:each in="${phonebookList}">
                         <tr class="gradeA">
-                            <td>${it.name} ${it.surname} ${it.patronymic}</td>
+                            <td><a href="/phonebook/show/${it.id}" target="_blank">${it.surname} ${it.name} ${it.patronymic}</a></td>
                             <g:set var="birth" value="${it.birthday}"/>
                             <% duration = new java.util.Date().toTimestamp().minus(birth) %>
                             <% years = Math.round(duration / 365) %>
@@ -50,7 +49,6 @@
             </div>
         </div>
     </g:form>
-
     <div class="pagination">
         <g:paginate total="${phonebookCount ?: 0}"/>
     </div>

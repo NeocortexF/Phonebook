@@ -35,13 +35,13 @@
         <fieldset class="form">
             <div class="fieldcontain">
                 <div class="form-group">
-                    <label for="name">Имя</label>
-                    <g:textField name="name" required="true" value="${this.phonebook.name}"/>
+                    <label for="surname">Фамилия</label>
+                    <g:textField name="surname" required="true" value="${this.phonebook.surname}"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="surname">Фамилия</label>
-                    <g:textField name="surname" required="true" value="${this.phonebook.surname}"/>
+                    <label for="name">Имя</label>
+                    <g:textField name="name" required="true" value="${this.phonebook.name}"/>
                 </div>
 
                 <div class="form-group">
