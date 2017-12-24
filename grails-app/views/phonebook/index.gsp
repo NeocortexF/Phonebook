@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ page import="java.sql.Date; phonebook.AgeCalculator" %>
+<%@ page import="java.sql.Date" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
