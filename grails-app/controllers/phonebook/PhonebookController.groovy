@@ -11,7 +11,7 @@ class PhonebookController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond phonebookService.list(params), model:[phonebookCount: phonebookService.count()]
+        respond phonebookService.list(params), model: [phonebookCount: phonebookService.count()]
     }
 
     def show(Long id) {
@@ -31,7 +31,7 @@ class PhonebookController {
         try {
             phonebookService.save(phonebook)
         } catch (ValidationException e) {
-            respond phonebook.errors, view:'create'
+            respond phonebook.errors, view: 'create'
             return
         }
 
@@ -57,7 +57,7 @@ class PhonebookController {
         try {
             phonebookService.save(phonebook)
         } catch (ValidationException e) {
-            respond phonebook.errors, view:'edit'
+            respond phonebook.errors, view: 'edit'
             return
         }
 
@@ -66,7 +66,7 @@ class PhonebookController {
                 flash.message = message(code: 'default.updated.messageOfContact', args: [message(code: 'phonebook.label', default: 'Phonebook'), phonebook.id])
                 redirect phonebook
             }
-            '*'{ respond phonebook, [status: OK] }
+            '*' { respond phonebook, [status: OK] }
         }
     }
 
@@ -81,9 +81,9 @@ class PhonebookController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.messageOfContact', args: [message(code: 'phonebook.label', default: 'Phonebook'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -93,8 +93,9 @@ class PhonebookController {
                 .splitEachLine(';') { fields ->
             def phonebook = new Phonebook(name: fields[1].trim(),
                     surname: fields[2].trim(), patronymic: fields[3].trim(),
-                    birthday: fields[4].toString().trim(), telephone: fields[5].trim(),
+                    birthday: fields[4].trim(), telephone: fields[5].trim(),
                     eMail: fields[6].trim())
+            phonebook.save(flush: true)
 
             if (phonebook.hasErrors() || phonebook.save(flush: true) == null) {
                 log.error("Could not import domainObject  ${phonebook.errors}")
@@ -102,6 +103,7 @@ class PhonebookController {
 
             log.debug("Importing domainObject  ${phonebook.toString()}")
         }
+
     }
 
     protected void notFound() {
@@ -110,7 +112,7 @@ class PhonebookController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'phonebook.label', default: 'Phonebook'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }
