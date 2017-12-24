@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ page import="phonebook.AgeCalculator" %>
 <html>
     <head>
         <meta name="layout" content="main" />
@@ -30,12 +31,19 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <g:each in="${phonebookList}">
                             <tr class="gradeA">
-                                <g:each in="${phonebookList}">
                                     <td>${it.name} ${it.surname} ${it.patronymic}</td>
-                                    <td>${it.birthday}</td>
-                                </g:each>
+
+                                    %{--<% duration = groovy.time.TimeCategory.minus(--}%
+                                            %{--new Date(),--}%
+                                            %{--new Date(2000, 10, 10)--}%
+                                    %{--) %>--}%
+
+                                    <td><age:daysBetween /></td>
+
                             </tr>
+                            </g:each>
                             </tbody>
                         </table>
                     </div>
