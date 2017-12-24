@@ -71,5 +71,18 @@
         </fieldset>
     </g:form>
 </div>
+
+%{--<script type="text/javascript">--}%
+    %{--$('.datePicker').datepicker({--}%
+        %{--changeYear: true,--}%
+        %{--changeMonth: true,--}%
+        %{--autoSize: true,--}%
+        %{--dateFormat: "dd-mm-yy",--}%
+        %{--maxDate: "0y",--}%
+        %{--showAnim: "show",--}%
+        %{--yearRange:'c-70:c+0'--}%
+    %{--});--}%
+%{--</script>--}%
+
 </body>
 </html>

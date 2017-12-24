@@ -2,12 +2,12 @@ package phonebook
 
 class AgeCalculator {
 
-        static daysBetween() {
+        static daysBetween(String date) {
 
-//            def birthday = date
-//            println(birthday)
+            def birthday = date
+            println(birthday)
             def today = Calendar.instance
 
-            return today
+            return today.timeInMillis.toBigInteger()
         }
 }
