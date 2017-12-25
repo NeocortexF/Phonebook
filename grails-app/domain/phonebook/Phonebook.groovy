@@ -5,9 +5,9 @@ class Phonebook {
     static constraints = {
         name blank: false
         surname blank: false
-        birthday nullable: false
+        birthday nullable: true, blank: false
         eMail email: true, blank: true
-        patronymic blank: true
+        patronymic nullable: true, blank: true
         telephone blank: true
     }
 

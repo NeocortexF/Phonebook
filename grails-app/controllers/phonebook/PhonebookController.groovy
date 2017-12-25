@@ -1,8 +1,6 @@
 package phonebook
 
 import grails.validation.ValidationException
-import org.springframework.web.multipart.MultipartFile
-
 import static org.springframework.http.HttpStatus.*
 
 class PhonebookController {
@@ -13,7 +11,7 @@ class PhonebookController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond phonebookService.list(params), model:[phonebookCount: phonebookService.count()]
+        respond phonebookService.list(params), model: [phonebookCount: phonebookService.count()]
     }
 
     def show(Long id) {
@@ -33,7 +31,7 @@ class PhonebookController {
         try {
             phonebookService.save(phonebook)
         } catch (ValidationException e) {
-            respond phonebook.errors, view:'create'
+            respond phonebook.errors, view: 'create'
             return
         }
 
@@ -59,7 +57,7 @@ class PhonebookController {
         try {
             phonebookService.save(phonebook)
         } catch (ValidationException e) {
-            respond phonebook.errors, view:'edit'
+            respond phonebook.errors, view: 'edit'
             return
         }
 
@@ -68,7 +66,7 @@ class PhonebookController {
                 flash.message = message(code: 'default.updated.messageOfContact', args: [message(code: 'phonebook.label', default: 'Phonebook'), phonebook.id])
                 redirect phonebook
             }
-            '*'{ respond phonebook, [status: OK] }
+            '*' { respond phonebook, [status: OK] }
         }
     }
 
@@ -83,20 +81,37 @@ class PhonebookController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.messageOfContact', args: [message(code: 'phonebook.label', default: 'Phonebook'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
-    def upload() {
-        MultipartFile file = request.getFile( 'file' )
-        file.inputStream.eachCsvLine { row ->
-            String name = row[1] ?: "NA";
-            String email = row[2] ?: "NA";
+    def upload = {
+        request.getFile('filecsv')
+                .inputStream
+                .splitEachLine(';') { fields ->
+            def phonebook = new Phonebook(name: fields[1].trim(),
+                    surname: fields[2].trim(), patronymic: fields[3].trim(),
+                    telephone: fields[5].trim(),
+                    eMail: fields[6].trim())
 
-            // Business Logic here
+            //birthday: fields[4].trim(),
+
+            if (phonebook.hasErrors() || phonebook.save(flush: true) == null) {
+                log.error("Could not import domainObject  ${phonebook.errors}")
+            }
+
+            log.debug("Importing domainObject  ${phonebook.toString()}")
         }
+
+//        def stringList = phonebookService.list()
+//        String result = stringList.join(",")
+//        result.each {
+//            println "${it.each {print({it}.toString())}}"
+//        }
+
+
     }
 
     protected void notFound() {
@@ -105,7 +120,7 @@ class PhonebookController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'phonebook.label', default: 'Phonebook'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }
