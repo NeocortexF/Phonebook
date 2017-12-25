@@ -105,11 +105,11 @@ class PhonebookController {
             log.debug("Importing domainObject  ${phonebook.toString()}")
         }
 
-        def stringList = phonebookService.list()
-        String result = stringList.join(",")
-        result.each {
-            println "${it}"
-        }
+//        def stringList = phonebookService.list()
+//        String result = stringList.join(",")
+//        result.each {
+//            println "${it.each {print({it}.toString())}}"
+//        }
 
 
     }
