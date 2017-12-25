@@ -107,7 +107,10 @@ class PhonebookController {
 
         def stringList = phonebookService.list()
         String result = stringList.join(",")
-        println(result)
+        result.each {
+            println "${it}"
+        }
+
 
     }
 
