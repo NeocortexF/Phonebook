@@ -22,20 +22,22 @@
 
 <body>
 
-<div class="navbar navbar-default navbar-static-top" role="navigation">
+<div class="navbar navbar-static-top" role="navigation">
+
+
     <div class="container-fluid nav-bar">
+
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+
             <a class="navbar-brand" href="/#">
                 <asset:image src="logo.png" alt="" class="img-responsive logo"/>
             </a>
+
+            <h1 class="navbar-text h1">Phonebook</h1>
         </div>
-        <h1 class="nav navbar-nav navbar-text h1">Phonebook</h1>
+
+
+
         <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
             <ul class="nav navbar-nav navbar-right">
                 <g:pageProperty name="page.nav"/>
@@ -46,20 +48,11 @@
 
 <g:layoutBody/>
 
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-6 footer-para">
-                <p>Тестовое задание по навыкам Groovy/Grails. (c) Евгений Шамкин 2017</p>
-            </div>
-        </div>
+<footer class="footer" role="contentinfo">
+    <div class="container text-center">
+        <p>Тестовое задание по навыкам Groovy/Grails. (c) Евгений Шамкин 2017</p>
     </div>
 </footer>
-
-
-%{--<div class="footer" role="contentinfo">--}%
-    %{--<p>Тестовое задание по навыкам Groovy/Grails. (c) Евгений Шамкин 2017</p>--}%
-%{--</div>--}%
 
 <div id="spinner" class="spinner" style="display:none;">
     <g:message code="spinner.alt" default="Loading&hellip;"/>
