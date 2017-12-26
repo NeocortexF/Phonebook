@@ -50,6 +50,7 @@
     </g:form>
     <div class="panel-info col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <label class="h3">Импортировать из CSV</label>
+
         <div class="panel-heading">
             <g:uploadForm action="upload">
                 <input class="panel-info" type="file" name="filecsv"/>
@@ -57,6 +58,7 @@
             </g:uploadForm>
         </div>
     </div>
+
     <div class="pagination">
         <g:paginate total="${phonebookCount ?: 0}"/>
     </div>

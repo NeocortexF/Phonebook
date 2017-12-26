@@ -93,103 +93,29 @@ class PhonebookController {
     }
 
     def upload = {
-
-        String birthdayField
-
-        //!! вот оно
         request.getFile('filecsv').inputStream.splitEachLine(';') { line ->
-            if(line.contains('#')){
+            if (line.contains('#')) {
+
             } else {
-
-
-                birthdayField = line[4]
-
+                String birthdayField = line[4]
                 DateFormat formatter
                 formatter = new SimpleDateFormat("dd.MM.yyyy")
                 Date date = (Date) formatter.parse(birthdayField.trim())
                 java.sql.Timestamp timestamp = new Timestamp(date.getTime())
 
-                println(timestamp)
-//                def birthday = new java.util.Date(birthdayField).toTimestamp()
-
-
                 def phonebook = new Phonebook(name: line[1].trim(),
-                    surname: line[2].trim(), patronymic: line[3].trim(),
+                        surname: line[2].trim(), patronymic: line[3].trim(),
                         birthday: timestamp, telephone: line[5].trim(),
-                    eMail: line[6].trim())
+                        eMail: line[6].trim())
 
                 if (phonebook.hasErrors() || phonebook.save(flush: true) == null) {
-                log.error("Could not import domainObject  ${phonebook.errors}")
-            }
-
-            log.debug("Importing domainObject  ${phonebook.toString()}")
-
+                    log.error("Could not import domainObject  ${phonebook.errors}")
+                }
+                log.debug("Importing domainObject  ${phonebook.toString()}")
             }
         }
-
-//        def list = request.getFile('filecsv').inputStream.splitEachLine(';').collect {it}
-//        println(list)
-
-
-//        def file = request.getFile('filecsv')
-//        StringBuilder sb = new StringBuilder()
-//        def fs = file.getInputStream()
-//
-//        int ch
-//        while((ch = fs.read()) != -1){
-//            sb.append((char)ch)
-//        }
-//
-//        String fileFullContent = sb.toString()
-//        String[] wordArray = fileFullContent.split('$')
-//
-//
-//        println(wordArray.toString())
-//        println(wordArray.length)
-
-//        println(wordArray[0])
-//        println(wordArray[6])
-//        println(wordArray[6])
-
-
-
-//        for(int i = 0; i <= wordArray.length; i=i+7){
-//            idField = wordArray[i]
-//            nameField = wordArray[i+1]
-//            surnameField = wordArray[i+2]
-//            patronymicField = wordArray[i+3]
-//            birthdayField = wordArray[i+4]
-//            telephoneField = wordArray[i+5]
-//            eMailField = wordArray[i+6]
-//
-//            println("\nСледущая сторока " + idField +" "+ nameField +" "
-//            + surnameField +" " + patronymicField +" " + birthdayField +" " + telephoneField +" "+ eMailField)
-//
-//        }
-
+        redirect(uri:'/')
     }
-
-
-
-
-//        request.getFile('filecsv')
-//                .inputStream
-//                .splitEachLine(';') { fields ->
-//            def phonebook = new Phonebook(name: fields[1].trim(),
-//                    surname: fields[2].trim(), patronymic: fields[3].trim(),
-//                    telephone: fields[5].trim(),
-//                    eMail: fields[6].trim())
-
-//birthday: fields[4].trim().toDate(),
-//            if (phonebook.hasErrors() || phonebook.save(flush: true) == null) {
-//                log.error("Could not import domainObject  ${phonebook.errors}")
-//            }
-//
-//            log.debug("Importing domainObject  ${phonebook.toString()}")
-//        }
-
-//
-//    }
 
     protected void notFound() {
         request.withFormat {
