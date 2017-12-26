@@ -1,6 +1,11 @@
 package phonebook
 
 import grails.validation.ValidationException
+
+import java.sql.Timestamp
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+
 import static org.springframework.http.HttpStatus.*
 
 class PhonebookController {
@@ -96,12 +101,22 @@ class PhonebookController {
             if(line.contains('#')){
             } else {
 
-                birthdayField = line[4] //!!
 
-                def phonebook = new Phonebook(name: fields[1].trim(),
-                    surname: fields[2].trim(), patronymic: fields[3].trim(),
-                        birthday: birthdayField, telephone: fields[5].trim(),
-                    eMail: fields[6].trim())
+                birthdayField = line[4]
+
+                DateFormat formatter
+                formatter = new SimpleDateFormat("dd.MM.yyyy")
+                Date date = (Date) formatter.parse(birthdayField.trim())
+                java.sql.Timestamp timestamp = new Timestamp(date.getTime())
+
+                println(timestamp)
+//                def birthday = new java.util.Date(birthdayField).toTimestamp()
+
+
+                def phonebook = new Phonebook(name: line[1].trim(),
+                    surname: line[2].trim(), patronymic: line[3].trim(),
+                        birthday: timestamp, telephone: line[5].trim(),
+                    eMail: line[6].trim())
 
                 if (phonebook.hasErrors() || phonebook.save(flush: true) == null) {
                 log.error("Could not import domainObject  ${phonebook.errors}")
